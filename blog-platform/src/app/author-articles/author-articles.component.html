@@ -1,0 +1,97 @@
+<div class="discover">
+  <div class="align-center">
+    <img
+      src="https://t4.ftcdn.net/jpg/05/56/12/17/360_F_556121755_Zfs9vuWwMZh8Rk9vtdCPL3fNotKfGFOu.jpg"
+    />
+  </div>
+  <div class="align-center">
+    <form>
+      <input
+        class="search-bar"
+        type="text"
+        placeholder="Search by title or author"
+        [formControl]="control"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let data of filteredResults$ | async"
+          [value]="data.author"
+        >
+          {{ data.author }}
+        </mat-option>
+      </mat-autocomplete>
+    </form>
+  </div>
+  <div class="categories align-center">
+    <button>Everything Explained</button>
+    <button>Tech Reads</button>
+    <button>Family Timephy</button>
+  </div>
+  <div class="search-results" *ngIf="(control.value?.trim() || '').length > 0">
+    <div
+      *ngFor="let result of filteredResults$ | async"
+      class="search-card"
+      appMagnify
+    >
+      <mat-card (click)="showMore(result)">
+        <img mat-card-image [src]="result.thumbnail" alt="{{ result.title }}" />
+        <mat-card-header>
+          <mat-card-title>{{ result.title }}</mat-card-title>
+          <mat-card-subtitle
+            >{{ result.author }} - {{ result.publishDate }}</mat-card-subtitle
+          >
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ result.description | slice : 0 : 80 }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="section">
+    <h5>Readers' choice</h5>
+    <div class="carousel">
+      <button class="carousel-control prev" (click)="prevSlide()">
+        &#10094;
+      </button>
+      <div class="readers-choice">
+        <div
+          *ngFor="let article of visibleArticles; index as i"
+          class="align"
+          appMagnify
+        >
+          <mat-card class="article-card" (click)="showMore(article)">
+            <img
+              mat-card-image
+              [src]="article.thumbnail"
+              alt="{{ article.title }}"
+            />
+            <mat-card-header>
+              <mat-card-title>{{ article.title }}</mat-card-title>
+              <mat-card-subtitle
+                >{{ article.author }} -
+                {{ article.publishDate }}</mat-card-subtitle
+              >
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{ article.description | slice : 0 : 80 }}...</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <button class="carousel-control next" (click)="nextSlide()">
+        &#10095;
+      </button>
+    </div>
+  </div>
+  <div class="section">
+    <h5>Rising authors</h5>
+    <div class="authors">
+      <app-author-card
+        *ngFor="let author of authors"
+        [author]="author"
+      ></app-author-card>
+    </div>
+  </div>
+</div>

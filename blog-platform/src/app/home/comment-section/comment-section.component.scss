@@ -1,0 +1,49 @@
+.comment-section {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background-color: #fff; 
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 2000; 
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+
+  button[mat-icon-button] {
+    z-index: 2001;
+    background-color: #fff; 
+  }
+
+  mat-card {
+    background-color: #fff; 
+    box-shadow: none;
+  }
+
+  .comments-list {
+    flex-grow: 1;
+    margin-top: 20px;
+
+    .comment {
+      margin-bottom: 15px;
+
+      .reply-form {
+        margin-top: 10px;
+      }
+    }
+
+    .replies-list {
+      margin-left: 20px;
+
+      .reply {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+.full-width {
+  width: 100%;
+}

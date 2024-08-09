@@ -1,0 +1,46 @@
+<div class="article-detail">
+  <h5>{{ article?.title }}</h5>
+  <p>Blog by - {{ article?.author }}</p>
+  <p>{{ article?.content }}</p>
+  <p>{{ article?.publishDate }}</p>
+  <div class="tag-container">
+    <span *ngFor="let tag of article?.tags">
+      <button class="btn" mat-raised-button>{{ tag }}</button>
+    </span>
+  </div>
+  <img src="{{ article?.thumbnail }}" />
+  <p>{{ article?.description }}</p>
+
+  <button mat-raised-button color="primary" (click)="toggleComments()">
+    Read Comments
+  </button>
+</div>
+<div class="comment-section-wrapper" [class.open]="showComments">
+  <app-comment-section
+    *ngIf="showComments"
+    (closeComments)="toggleComments()"
+  ></app-comment-section>
+</div>
+<div class="section">
+  <h5>Related Articles</h5>
+  <div class="related-article">
+    <div *ngFor="let article of relatedArticles; index as i" appMagnify>
+      <mat-card class="article-card" (click)="readMore(i)">
+        <img
+          mat-card-image
+          [src]="article.thumbnail"
+          alt="{{ article.title }}"
+        />
+        <mat-card-header>
+          <mat-card-title>{{ article.title | slice : 0 : 20 }}</mat-card-title>
+          <mat-card-subtitle
+            >{{ article.author }} - {{ article.publishDate }}</mat-card-subtitle
+          >
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ article.description | slice : 0 : 100 }}...</p>
+        </mat-card-content>        
+      </mat-card>
+    </div>
+  </div>
+</div>

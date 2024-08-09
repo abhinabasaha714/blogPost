@@ -1,0 +1,64 @@
+<form class="search-form">
+  <input
+    type="text"
+    placeholder="Search by title or author"
+    [formControl]="control"
+    [matAutocomplete]="auto"
+    class="search-input"
+  />
+  <mat-icon matSuffix class="position">search</mat-icon>
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option
+      *ngFor="let article of filteredResults | async"
+      [value]="article.title"
+    >
+      {{ article.title }} by {{ article.author }}
+    </mat-option>
+  </mat-autocomplete>
+</form>
+
+<div class="buttons-container">
+  <button
+    [class.active]="selectedType === 'all'"
+    (click)="onButtonClick('all')"
+  >
+    All
+  </button>
+  <button
+    mat-button
+    [ngClass]="{ active: selectedType === 'popular' }"
+    (click)="onButtonClick('popular')"
+  >
+    Popular
+  </button>
+  <button
+    mat-button
+    [ngClass]="{ active: selectedType === 'latest' }"
+    (click)="onButtonClick('latest')"
+  >
+    Latest
+  </button>
+  <button
+    mat-button
+    [ngClass]="{ active: selectedType === 'editors pick' }"
+    (click)="onButtonClick('editors pick')"
+  >
+    Editor's Pick
+  </button>
+</div>
+
+<div *ngIf="paginatedArticles.length > 0" class="articles-list">
+  <app-articles
+    *ngFor="let article of paginatedArticles"
+    [article]="article"
+  ></app-articles>
+</div>
+
+<mat-paginator
+  *ngIf="filteredResultsLength > pageSize"
+  [length]="filteredResultsLength"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[6, 12, 18]"
+  (page)="onPageChange($event)"
+>
+</mat-paginator>

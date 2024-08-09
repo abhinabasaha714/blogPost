@@ -1,0 +1,73 @@
+<mat-toolbar color="primary">
+  <span>Blog Editor</span>
+  <span class="spacer"></span>
+  <button mat-button [disabled]="blogForm.invalid" (click)="saveDraft()">
+    Save as Draft
+  </button>
+  <button
+    mat-button
+    color="accent"
+    [disabled]="blogForm.invalid"
+    (click)="publish()"
+  >
+    Publish
+  </button>
+</mat-toolbar>
+
+<div class="editor-container">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="blogForm">
+        <mat-form-field class="align" appearance="fill">
+          <mat-label>Author</mat-label>
+          <input matInput formControlName="author" placeholder="Enter title" />
+          <mat-error *ngIf="blogForm.get('author')?.hasError('required')"
+            >Author is required</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field class="align" appearance="fill">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" placeholder="Enter title" />
+          <mat-error *ngIf="blogForm.get('title')?.hasError('required')"
+            >Title is required</mat-error
+          >
+          <mat-error *ngIf="blogForm.get('title')?.hasError('minlength')"
+            >Title must be at least 5 characters long</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category">
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{ category }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="blogForm.get('category')?.hasError('required')"
+            >Category is required</mat-error
+          >
+        </mat-form-field>
+
+        <quill-editor formControlName="description"></quill-editor>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Publish Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="publishDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="blogForm.get('publishDate')?.hasError('required')"
+            >Publish Date is required</mat-error
+          >
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

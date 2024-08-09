@@ -1,0 +1,68 @@
+<div class="comment-section">
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <h5>Comments ({{ comments.length }})</h5>
+  <form (ngSubmit)="addComment()">
+    <mat-form-field appearance="outline" class="full-width">
+      <textarea
+        matInput
+        placeholder="Write a comment..."
+        [(ngModel)]="newComment"
+        name="comment"
+      ></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Post</button>
+  </form>
+
+  <div class="comments-list">
+    <div *ngFor="let comment of comments; let i = index" class="comment">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar><mat-icon>account_circle</mat-icon></div>
+          <mat-card-title>{{ comment.author }}</mat-card-title>
+          <mat-card-subtitle>{{
+            comment.timestamp | date : "short"
+          }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ comment.text }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="toggleReply(i)">Reply</button>
+        </mat-card-actions>
+        <div *ngIf="replyIndex === i" class="reply-form">
+          <form (ngSubmit)="addReply(i)">
+            <mat-form-field appearance="outline" class="full-width">
+              <textarea
+                matInput
+                placeholder="Write a reply..."
+                [(ngModel)]="newReply"
+                name="reply"
+              ></textarea>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit">
+              Post Reply
+            </button>
+          </form>
+        </div>
+        <div class="replies-list" *ngIf="comment.replies.length">
+          <div *ngFor="let reply of comment.replies" class="reply">
+            <mat-card>
+              <mat-card-header>
+                <div mat-card-avatar><mat-icon>account_circle</mat-icon></div>
+                <mat-card-title>{{ reply.author }}</mat-card-title>
+                <mat-card-subtitle>{{
+                  reply.timestamp | date : "short"
+                }}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>{{ reply.text }}</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

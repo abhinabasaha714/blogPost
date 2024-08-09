@@ -1,0 +1,32 @@
+{
+    "authors": [
+      {
+        "id": 1,
+        "name": "Alexander Hughes",
+        "category": "Sci-Fi",
+        "description": "Award-winning sci-fi writer with a knack for creating futuristic worlds.",
+        "views": "300K+",
+        "bloggerType": "Science",
+        "image": "https://s26162.pcdn.co/wp-content/uploads/2018/01/neil.png"
+      },
+      {
+        "id": 2,
+        "name": "Christopher Brown",
+        "category": "Tech",
+        "description": "Tech enthusiast & software engineer, passionate about technologies.",
+        "views": "500K+",
+        "bloggerType": "Tech",
+        "image": "https://static.gofugyourself.com/uploads/2018/02/common-oscar-nominee-brunch-gfy-shutterstock_9354235q-1517873135.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Sophia Anderson",
+        "category": "Fashion",
+        "description": "Fashionista and stylist, guides to build your personal and sustainable closet.",
+        "views": "300K+",
+        "bloggerType": "Fashion",
+        "image": "https://i0.wp.com/kobowritinglife.com/wp-content/uploads/2021/07/RW3_5.jpg?resize=684%2C1024&ssl=1"
+      }
+    ]
+  }
+  

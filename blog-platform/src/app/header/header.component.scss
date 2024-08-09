@@ -1,0 +1,17 @@
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img{
+    width: 7.5rem;
+  }
+}
+
+.button-group {
+  display: flex;
+  gap: 16px;
+}
+.bg-bisque {
+  background-color: bisque;
+}

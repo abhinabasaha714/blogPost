@@ -1,0 +1,28 @@
+.featured-articles {
+  margin-bottom: 2rem;
+  margin: 2rem;
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  .article-card {
+    margin-bottom: 1rem;
+    img {
+      max-height: 200px;
+      object-fit: cover;
+    }
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+}

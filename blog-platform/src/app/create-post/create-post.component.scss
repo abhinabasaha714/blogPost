@@ -1,0 +1,16 @@
+.editor-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  .align {
+    margin-right: 2rem;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+quill-editor {
+  height: 300px;
+  margin-bottom: 20px;
+}

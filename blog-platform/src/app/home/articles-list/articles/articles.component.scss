@@ -1,0 +1,58 @@
+.article-card {
+  margin: 0 2rem 0 2rem;
+
+  .article-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.5rem;
+
+    .text-content {
+      flex: 1;
+      padding-right: 1rem;
+
+      mat-card-header {
+        padding: 0;
+      }
+
+      mat-card-title {
+        font-size: 1.5rem;
+      }
+
+      mat-card-subtitle {
+        font-size: 1rem;
+        color: gray;
+      }
+
+      mat-card-content {
+        margin-top: 1rem;
+      }
+
+      mat-card-actions {
+        margin-top: 1rem;
+      }
+    }
+
+    .image-content {
+      flex: 0 0 auto;
+      img {
+        max-height: 200px;
+        width: auto;
+        object-fit: cover;
+      }
+    }
+  }
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}

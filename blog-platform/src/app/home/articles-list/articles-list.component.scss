@@ -1,0 +1,44 @@
+.search-form {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 40%;
+  height: 2rem;
+}
+
+.articles-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.position {
+  position: relative;
+  right: 2rem;
+  top: 0.6rem;
+}
+
+mat-paginator {
+  margin-top: 1rem;
+}
+.buttons-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+
+  button {
+    border: none;
+    padding: 0.5rem 1rem;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &.active {
+      background-color: #007bff;
+      color: #fff;
+    }
+  }
+}

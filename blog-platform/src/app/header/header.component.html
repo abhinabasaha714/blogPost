@@ -1,0 +1,20 @@
+<mat-toolbar color="warn" class="shadow-lg bg-bisque">
+  <button mat-button [routerLink]="['']"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSdReLeTDjSn6-KVDiVMd4KJ7bE9TPxn82_g&s" alt="Blog" /></button>
+  <div>
+    <button mat-button [routerLink]="['/articles&authors']">
+      Articles & Authors
+    </button>
+    <button mat-button [routerLink]="['/create-post']">Create Post</button>
+    <button mat-button [routerLink]="['/drafts']">Drafts</button>
+    <button
+      mat-button
+      *ngIf="isAuthenticated; else loginButton"
+      (click)="onLogout()"
+    >
+      Logout
+    </button>
+    <ng-template #loginButton>
+      <button mat-button [routerLink]="['/signup']">Signup</button>
+    </ng-template>
+  </div>
+</mat-toolbar>
