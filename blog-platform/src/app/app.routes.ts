@@ -25,28 +25,22 @@ export const routes: Routes = [
     {
         path: 'articles&authors',
         component:AuthorArticlesComponent,
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'create-post',
         component:CreatePostComponent,
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path :'article/:id',
         component: ArticleDetailsComponent,
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
     },{
         path:'drafts',
         component: DraftsComponent,
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
     }
-
-    // {
-    //     path: 'articles',
-    //     component:ArticlesComponent
-    // },
-
 ];
 
 @NgModule({
